@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
+    
+<!-- BOOTSTRAP -->
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+
+<!-- CSS -->
+    <link rel="stylesheet" href="css/todo.css" type="text/css">  
+</head>
+
+<body ng-app="todoApp" ng-controller="todoCtrl">
+    <div class="col-xs-2"></div><!-- sidebar for spacing-->
+        <div class="app col-xs-8">
+          
+          <!-- H E A D E R -->
+          
+            <header class="col-xs-12 text-center">
+                <h1>To-Do List</h1>
+            </header>
+        
+        <!-- S U B H E A D E R -->
+           
+            <div id="titles">
+                <h3>Add an item to your to-do list</h3>
+            </div>
+        
+        <!-- I N P U T   F O R M -->
+        
+<form class="col-xs-12 inputForm">
+
+    <!-- T E X T   F I E L D S -->
+
+    <input class="addItem col-xs-4" ng-model="newTask.addItem" type="text" placeholder="Add a task">
+    <input class="addDesc col-xs-4" ng-model="newTask.addDesc" type="text" placeholder="Add a description">
+    <input class="addDate col-xs-3" ng-model="newTask.addDate" type="text" placeholder="Add the due date">
+    <button class="addbtn col-xs-1" ng-click="add()">Add</button>
+</form>
+       
+        
+<!-- O U T P U T -->
+        
+<div class="">
+
+<ul class="listItem col-xs-12" id="items">
+
+<!-- D O N E -->      
+<br>
+<div id="titles">
+    <h3>To-do</h3>
+</div>
+<div id="appear">
+    <div id="editables" ng-repeat="task in tasks | filter:{done:false} track by $index">
+        <input ng-model="task.addItem" class="tf col-xs-4" id="addItem" placeholder="Edit item">
+        <input ng-model="task.addDesc" class="tf col-xs-4" id="addDesc" placeholder="Edit description">
+        <input ng-model="task.addDate" class="tf col-xs-3" id="addDate" placeholder="Edit due date">
+
+        <div id="clickables" class="col-xs-1">
+            <input ng-model="task.done" type="checkbox" class="checkbox glyphicon glyphicon-ok">
+            
+            <button ng-click="delete(task)" class="glyphicon glyphicon-remove"></button>
+            
+            <button ng-model="task.done" class="savebtn" ng-change="save(task)">Save</button>
+        </div>    
+        
+    </div>
+</div>
+            
+<!-- C O M P L E T E D -->              
+<br>   
+<div id="titles">
+    <h3>Completed</h3>
+</div>
+<div id="appear">
+    <div id="editablesTwo" ng-repeat="task in tasks | filter:{done:true} track by $index">
+        <input ng-model="task.addItem" class="tfTwo col-xs-4" id="addItem" placeholder="Edit item">
+        <input ng-model="task.addDesc" class="tfTwo col-xs-4" id="addDesc" placeholder="Edit description">
+        <input ng-model="task.addDate" class="tfTwo col-xs-3" id="addDate" placeholder="Edit due date">
+        
+<div id="clickablesTwo" class="col-xs-1">
+    <input ng-model="task.done" type="checkbox" class="checkboxTwo glyphicon glyphicon-ok" checked>
+    
+    <button ng-click="delete(task)" type="button" class="glyphicon glyphicon-remove"></button>
+    
+    <button ng-model="task.done" type="button" class="savebtn" ng-change="save(task)">Save</button>
+</div>
+    </div>
+</div>
+</ul>
+</div>
+</div>
+    
+<!-- ANGULAR -->
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular-route.min.js"></script>
+    
+<!-- JAVASCRIPT -->
+    <script src="js/todo.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/cuid/1.3.8/browser-cuid.min.js"></script>
+</body>
+</html>

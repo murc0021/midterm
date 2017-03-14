@@ -1,0 +1,97 @@
+body{
+    padding:50px;
+    background-color:lightgrey;
+}
+
+header{
+    background: linear-gradient(to left, #614385 , #516395);
+    color:white;
+    padding:20px;
+    margin-bottom:15px;
+}
+
+#appear{
+    margin-bottom:30px;
+}
+
+.app{
+    background-color:white;
+    padding:20px;
+}
+
+.addItem, .addDesc, .addDate, .tf, .tfTwo{
+    height:40px;
+}
+
+li{
+    list-style: none;
+}
+
+.inputForm, .listItem{
+    padding:0;
+}
+
+.addbtn{
+    background-color:green;
+    border:2px solid darkgreen;
+    border-radius:4px;
+    color:white;
+    font-size:18px;
+    padding:5px;
+    padding-left:10px;
+    padding-right:10px;
+}
+
+.savebtn{
+    -webkit-appearance:none;
+    width:auto;
+    height:20px;
+    color:white;
+    background-color:green;
+    border:2px solid darkgreen;
+    border-radius:4px;
+    font-size:12px;
+}
+
+.col-xs-1{
+    align-content: center;
+}
+
+.checkbox{
+    -webkit-appearance:none;
+    width:30px;
+    height:20px;
+    color:lightgrey;
+    border:2px solid dodgerblue;
+    border-radius: 4px;
+    text-align: center;
+}
+
+.checkboxTwo{
+    -webkit-appearance:none;
+    width:30px;
+    height:20px;
+    background-color:white;
+    border:2px solid dodgerblue;
+    border-radius: 4px;
+}
+
+.checkboxTwo:checked{
+    background-color:deepskyblue;
+    color:white;
+    text-align: center;
+}
+.glyphicon-remove{
+    background-color:red;
+    border:2px solid darkred;
+    border-radius: 4px;
+    color:white;
+}
+
+.tf, .tfTwo{
+    border:none;
+}
+
+.tfTwo{
+    background-color:#CDFFCD;
+}
