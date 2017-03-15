@@ -10,6 +10,16 @@ header{
     margin-bottom:15px;
 }
 
+li{
+    list-style: none;
+}
+
+#clickables input, #clickables button, #clickablesTwo input, #clickablesTwo button{
+    align-items:flex-start;
+    display:inline-block;
+    white-space: nowrap;
+}
+
 #appear{
     margin-bottom:30px;
 }
@@ -23,12 +33,20 @@ header{
     height:40px;
 }
 
-li{
-    list-style: none;
+.tf, .tfTwo{
+    border:none;
+}
+
+.tfTwo{
+    background-color:#CDFFCD;
 }
 
 .inputForm, .listItem{
     padding:0;
+}
+
+.col-xs-1{
+    align-content: center;
 }
 
 .addbtn{
@@ -42,56 +60,51 @@ li{
     padding-right:10px;
 }
 
-.savebtn{
-    -webkit-appearance:none;
-    width:auto;
-    height:20px;
-    color:white;
-    background-color:green;
-    border:2px solid darkgreen;
-    border-radius:4px;
-    font-size:12px;
-}
-
-.col-xs-1{
-    align-content: center;
-}
-
 .checkbox{
     -webkit-appearance:none;
-    width:30px;
-    height:20px;
-    color:lightgrey;
-    border:2px solid dodgerblue;
-    border-radius: 4px;
-    text-align: center;
+    color:darkgrey;
+}
+
+.checkbox:hover{
+    color:limegreen;
+    cursor:pointer;
 }
 
 .checkboxTwo{
     -webkit-appearance:none;
-    width:30px;
-    height:20px;
-    background-color:white;
-    border:2px solid dodgerblue;
-    border-radius: 4px;
+    color:grey;
+}
+
+.checkboxTwo:hover{
+    cursor:pointer;
 }
 
 .checkboxTwo:checked{
-    background-color:deepskyblue;
-    color:white;
-    text-align: center;
-}
-.glyphicon-remove{
-    background-color:red;
-    border:2px solid darkred;
-    border-radius: 4px;
-    color:white;
+    color:black;
 }
 
-.tf, .tfTwo{
+.checkboxTwo:checked:hover{
+    color:dimgrey;
+}
+
+.glyphicon-remove{
+    color:black;
+    border:none;
+    background:none;
+    padding:0;
+}
+
+.glyphicon-remove:hover{
+    color:red;
+}
+
+.glyphicon-floppy-save{
+    color:black;
+    padding:0;
+    background:none;
     border:none;
 }
 
-.tfTwo{
-    background-color:#CDFFCD;
+.glyphicon-floppy-save:hover{
+    color:blueviolet;
 }

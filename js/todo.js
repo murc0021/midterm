@@ -14,7 +14,7 @@ var app = angular.module('todoApp', [])
                 done: false
             };
         
-/*************************************************/
+/**********************************************************************/
         
         $scope.add = function(){
             
@@ -34,7 +34,7 @@ var app = angular.module('todoApp', [])
             $scope.save();
         };
         
-/*************************************************/
+/**********************************************************************/
         
         $scope.delete = function(task){
             const $index = $scope.tasks.findIndex(item => item.id === task.id);
@@ -45,13 +45,20 @@ var app = angular.module('todoApp', [])
             $scope.save();
         };
 
-/*************************************************/
+/**********************************************************************/
         
-        $scope.save = function(task){
+        $scope.edit = function () {
+            localStorage.setItem('tasks', JSON.stringify($scope.tasks));
+            
+            $scope.save();
+    }
+        
+/**********************************************************************/        
+        
+        $scope.save = function(){
             localStorage.setItem('tasks', JSON.stringify($scope.tasks));
         };        
         
-/*************************************************/
-        
-// this is the end, don't get rid of it!        
+/**********************************************************************/
+     
 });

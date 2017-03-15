@@ -13,85 +13,76 @@
 </head>
 
 <body ng-app="todoApp" ng-controller="todoCtrl">
-    <div class="col-xs-2"></div><!-- sidebar for spacing-->
+    <div class="col-xs-2"></div>
         <div class="app col-xs-8">
           
           <!-- H E A D E R -->
-          
             <header class="col-xs-12 text-center">
                 <h1>To-Do List</h1>
             </header>
         
         <!-- S U B H E A D E R -->
-           
             <div id="titles">
                 <h3>Add an item to your to-do list</h3>
             </div>
         
         <!-- I N P U T   F O R M -->
-        
-<form class="col-xs-12 inputForm">
-
-    <!-- T E X T   F I E L D S -->
-
-    <input class="addItem col-xs-4" ng-model="newTask.addItem" type="text" placeholder="Add a task">
-    <input class="addDesc col-xs-4" ng-model="newTask.addDesc" type="text" placeholder="Add a description">
-    <input class="addDate col-xs-3" ng-model="newTask.addDate" type="text" placeholder="Add the due date">
-    <button class="addbtn col-xs-1" ng-click="add()">Add</button>
-</form>
+            <form class="col-xs-12 inputForm">
+                <input class="addItem col-xs-4" ng-model="newTask.addItem" type="text" placeholder="Add a task" ng-change="save()">
+                <input class="addDesc col-xs-4" ng-model="newTask.addDesc" type="text" placeholder="Add a description" ng-change="save()">
+                <input class="addDate col-xs-3" ng-model="newTask.addDate" type="text" placeholder="Add the due date" ng-change="save()">
+                <button class="addbtn col-xs-1" ng-click="add()">Add</button>
+            </form>
        
         
 <!-- O U T P U T -->
-        
-<div class="">
+            <div class="">
+                <ul class="listItem col-xs-12" id="items">
 
-<ul class="listItem col-xs-12" id="items">
+<!-- T O  D O -->      
+                    <br>
+                    <div id="titles">
+                        <h3>To-do</h3>
+                    </div>
+                    <div id="appear">
+                        <div id="editables" ng-repeat="task in tasks | filter:{done:false} track by $index">
+                            <input ng-model="task.addItem" class="tf col-xs-4" id="addItem" placeholder="Edit item">
+                            <input ng-model="task.addDesc" class="tf col-xs-4" id="addDesc" placeholder="Edit description">
+                            <input ng-model="task.addDate" class="tf col-xs-3" id="addDate" placeholder="Edit due date">
 
-<!-- D O N E -->      
-<br>
-<div id="titles">
-    <h3>To-do</h3>
-</div>
-<div id="appear">
-    <div id="editables" ng-repeat="task in tasks | filter:{done:false} track by $index">
-        <input ng-model="task.addItem" class="tf col-xs-4" id="addItem" placeholder="Edit item">
-        <input ng-model="task.addDesc" class="tf col-xs-4" id="addDesc" placeholder="Edit description">
-        <input ng-model="task.addDate" class="tf col-xs-3" id="addDate" placeholder="Edit due date">
-
-        <div id="clickables" class="col-xs-1">
-            <input ng-model="task.done" type="checkbox" class="checkbox glyphicon glyphicon-ok">
+                                <div id="clickables" class="col-xs-1">
+                                    <input type="checkbox" ng-model="task.done" class="checkbox glyphicon glyphicon-ok" ng-change="save()">
             
-            <button ng-click="delete(task)" class="glyphicon glyphicon-remove"></button>
+                                    <button ng-click="delete(task)" type="button" class="glyphicon glyphicon-remove"></button>
             
-            <button ng-model="task.done" class="savebtn" ng-change="save(task)">Save</button>
-        </div>    
+                                    <button ng-click="edit(task)" type="button" class="glyphicon glyphicon-floppy-save"></button>
+                                </div>
+                        </div>
+                    </div>
+            
+<!-- C O M P L E T E D -->
+                    <br>   
+                    <div id="titles">
+                        <h3>Completed</h3>
+                    </div>
+                    <div id="appear">
+                        <div id="editablesTwo" ng-repeat="task in tasks | filter:{done:true} track by $index">
+                        <input ng-model="task.addItem" class="tfTwo col-xs-4" id="addItem" placeholder="Edit item">
+                        <input ng-model="task.addDesc" class="tfTwo col-xs-4" id="addDesc" placeholder="Edit description">
+                        <input ng-model="task.addDate" class="tfTwo col-xs-3" id="addDate" placeholder="Edit due date">
         
-    </div>
-</div>
-            
-<!-- C O M P L E T E D -->              
-<br>   
-<div id="titles">
-    <h3>Completed</h3>
-</div>
-<div id="appear">
-    <div id="editablesTwo" ng-repeat="task in tasks | filter:{done:true} track by $index">
-        <input ng-model="task.addItem" class="tfTwo col-xs-4" id="addItem" placeholder="Edit item">
-        <input ng-model="task.addDesc" class="tfTwo col-xs-4" id="addDesc" placeholder="Edit description">
-        <input ng-model="task.addDate" class="tfTwo col-xs-3" id="addDate" placeholder="Edit due date">
-        
-<div id="clickablesTwo" class="col-xs-1">
-    <input ng-model="task.done" type="checkbox" class="checkboxTwo glyphicon glyphicon-ok" checked>
+                            <div id="clickablesTwo" class="col-xs-1">
+                                <input ng-model="task.done" type="checkbox" class="checkboxTwo glyphicon glyphicon-ok" ng-change="save()" checked>
     
-    <button ng-click="delete(task)" type="button" class="glyphicon glyphicon-remove"></button>
+                                <button ng-click="delete(task)" type="button" class="glyphicon glyphicon-remove"></button>
     
-    <button ng-model="task.done" type="button" class="savebtn" ng-change="save(task)">Save</button>
-</div>
+                                <button ng-click="edit(task)" type="button" class="glyphicon glyphicon-floppy-save"></button>
+                            </div>
+                        </div>
+                    </div>
+                </ul>
+            </div>
     </div>
-</div>
-</ul>
-</div>
-</div>
     
 <!-- ANGULAR -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.2/angular.min.js"></script>
